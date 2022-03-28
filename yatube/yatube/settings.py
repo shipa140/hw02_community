@@ -54,6 +54,8 @@ ROOT_URLCONF = 'yatube.urls'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+POSTS_PER_PAGE = 10
+
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
