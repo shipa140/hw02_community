@@ -5,7 +5,8 @@ from .models import Post, Group
 
 def index(request):
     """Вывод на главную страницу."""
-    posts = Post.objects.order_by('-pub_date')[:10]
+    count_post_index = 10
+    posts = Post.objects.order_by('-pub_date')[:count_post_index]
     context = {
         'posts': posts,
     }
