@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 from .models import Group, Post
 
@@ -7,7 +7,7 @@ POST_COUNT = 10
 
 def index(request):
     """Вывод на главную страницу."""
-    posts = Post.objects.order_by('-pub_date')[:POST_COUNT]
+    posts = Post.objects.all()[:POST_COUNT]
     context = {
         'posts': posts,
     }
@@ -17,7 +17,7 @@ def index(request):
 def group_posts(request, slug):
     """Вывод на сообщество"""
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:POST_COUNT]
+    posts = group.posts.all()[:POST_COUNT]
     context = {
         'group': group,
         'posts': posts,

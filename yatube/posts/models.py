@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 from django.db import models
 
 User = get_user_model()
@@ -20,11 +19,6 @@ class Group(models.Model):
 
     def __str__(self):
         return self.title
-
-# class Meta:
-# verbose_name = 'group',
-# verbose_name_plural = 'groups',
-# при добавлении в админке отображаются скобки (grops,) и (group,)
 
 
 class Post(models.Model):
@@ -51,8 +45,4 @@ class Post(models.Model):
     )
 
     class Meta:
-        ordering = ['-pub_date']
-# class Meta:
-# verbose_name = 'post',
-# verbose_name_plural = 'posts',
-# при добавлении в админке отображаются скобки (grops,) и (group,)
+        ordering = ('-pub_date',)

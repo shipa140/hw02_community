@@ -1,11 +1,14 @@
 <article>
-    <ul>
-      <li>
-        Автор: {{ post.author.get_full_name }}
-      </li>
-      <li>
-        Дата публикации: {{ post.pub_date|date:"d E Y" }}
-      </li>
-    </ul>
-    <p>{{ post.text|linebreaks }}</p>   
+  <ul>
+    <li>
+      Автор: {{ post.author.get_full_name }}
+    </li>
+    <li>
+      Дата публикации: {{ post.pub_date|date:"d E Y" }}
+    </li>
+  </ul>
+  <p>{{ post.text|linebreaks }}</p>
+  {% if need_link and post.group %}   
+    <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы {{ post.group }}</a>
+  {% endif %} 
 </article>
